@@ -7,7 +7,7 @@ const Footer = () => {
   const navigate = useNavigate();
 
   return (
-    <div className='w-full bg-[#323232] text-[#d9d9d9] px-4 md:px-24 py-8 flex flex-col items-center mt-10'>
+    <div className='w-full bg-[#050505] text-[#d9d9d9] px-4 md:px-24 py-8 flex flex-col items-center mt-10'>
       <div className="grid md:grid-cols-[2fr_1fr_1fr] gap-10 md:gap-20">
         <div className="flex flex-col items-start gap-5">
             <img onClick={()=>{navigate('/'); scrollTo(0, 0)}} className='h-16 w-48 cursor-pointer' src={assets.logo} alt="" />
