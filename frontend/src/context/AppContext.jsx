@@ -13,6 +13,7 @@ const AppContextProvider = (props) => {
     const [currState, setCurrState] = useState('takeaway');
     const [items, setItems] = useState([]);
     const [loader, setLoader] = useState(false);
+    const [loader_2, setLoader_2] = useState(false);
 
 
     const [userData, setUserData] = useState(false);
@@ -35,6 +36,10 @@ const AppContextProvider = (props) => {
 
     const getAllItems = async () => {
         try {
+            setLoader_2(true);
+            setTimeout(() => {
+                
+            })
             const {data} = await axios.get(backendUrl+'/api/common/get-items')
             if(data.success){
                 setItems(data.Items);
@@ -44,6 +49,8 @@ const AppContextProvider = (props) => {
         } catch (error) {
             console.error(error);
             toast.error("Something went wrong! Please try again.");
+        } finally {
+            setLoader_2(false);
         }
     }
 
@@ -82,7 +89,8 @@ const AppContextProvider = (props) => {
         items,
         userData, setUserData, loadUserProfileData,
         orders, getAllOrders,
-        loader, setLoader
+        loader, setLoader,
+        loader_2
     }
 
     return <AppContext.Provider value={value}>

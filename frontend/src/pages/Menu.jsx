@@ -3,6 +3,7 @@ import { assets, menu_list } from '../assets/assets'
 import { Link, useLocation } from 'react-router-dom';
 import { StoreContext } from '../context/StoreContext';
 import { AppContext } from '../context/AppContext';
+import Loader2 from '../components/Loader2';
 
 const Menu = () => {
 
@@ -10,7 +11,7 @@ const Menu = () => {
   const currCategory = location.pathname.split("/")[2]; 
 
   const {cartItems, addToCart, removeFromCart} = useContext(StoreContext);
-  const {items} = useContext(AppContext);
+  const {items, loader_2} = useContext(AppContext);
 
   return (
     <div className='mt-5 flex flex-col'>
@@ -25,7 +26,7 @@ const Menu = () => {
       </div>
 
       <div className='grid md:grid-cols-2 lg:grid-cols-4 mt-10 gap-10 px-10'>
-      {
+      { loader_2 ? <div className='h-[200px] w-full md:w-[83vw] flex justify-center items-center'><Loader2 /></div> :
         items.filter((item) => item.category == currCategory || !currCategory).map((item, index) => (
             <div className='rounded-xl shadow-md' key={index}>
                 <div className="relative">

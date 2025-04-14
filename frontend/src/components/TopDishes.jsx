@@ -3,13 +3,14 @@ import {assets} from '../assets/assets'
 import { Link } from 'react-router-dom'
 import { StoreContext } from '../context/StoreContext';
 import { AppContext } from '../context/AppContext';
+import Loader2 from './Loader2';
 
 const TopDishes = () => {
 
   const {cartItems, addToCart, removeFromCart} = useContext(StoreContext);
-  const {items} = useContext(AppContext);
+  const {items, loader_2} = useContext(AppContext);
 
-  return (
+  return ( loader_2 ? <div className='h-[200px] w-full flex justify-center items-center'><Loader2 /></div> :
     <div className='w-full px-10 flex flex-col gap-5'>
       <h1 className='font-semibold text-[20px]'>Top Dishes</h1>
       <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-10'>
