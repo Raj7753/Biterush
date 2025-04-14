@@ -4,6 +4,7 @@ import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom';
+import Loader from '../components/Loader';
 
 
 const Signin = () => {
@@ -11,7 +12,7 @@ const Signin = () => {
   const [currState, setCurrState] = useState("Login");
   const [isTicked, setIsTicked] = useState(false);
 
-  const {setToken, backendUrl} = useContext(AppContext);
+  const {setToken, backendUrl, loader, setLoader} = useContext(AppContext);
   const navigate = useNavigate();
 
   const [fullName, setFullName] = useState('');
@@ -25,6 +26,7 @@ const Signin = () => {
       return;
     }
     try {
+      setLoader(true);
       if(currState == 'Login'){
         const {data} = await axios.post(backendUrl+'/api/user/login', {email, password});
 
@@ -51,6 +53,8 @@ const Signin = () => {
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong! Please try again.");
+    } finally{
+      setLoader(false);
     }
   }
 
@@ -63,7 +67,8 @@ const Signin = () => {
             <input onChange={(e)=>setEmail(e.target.value)} className='border-[1px] border-[#16161c] px-3 py-2 rounded-md outline-none ' type="email" placeholder='Your email' required/>
             <input onChange={(e)=>setPassword(e.target.value)} className='border-[1px] px-3 py-2 rounded-md outline-none border-[#16161c]' type="password" placeholder='Password' required/>
         </div>
-        <button onClick={authHandler} className='px-8 py-2 rounded-md bg-orange-400 hover:bg-orange-600 transition-all duration-300'>{currState==="Sign Up"?"Create account":"Login"}</button>
+        {loader ? <button className='rounded-md flex justify-center items-center py-3'><Loader /></button> : <button onClick={authHandler} className='px-8 py-2 rounded-md bg-orange-400 hover:bg-orange-600 transition-all duration-300'>{currState==="Sign Up"?"Create account":"Login"}</button>}
+        
         <div className="flex items-start gap-2">
             <input onClick={()=>setIsTicked(true)} className='cursor-pointer mt-1.5' type="checkbox" required/>
             <p className='text-[#848684ee]'>By continuing, I agree to the terms of use & privacy policy.</p>

@@ -12,6 +12,8 @@ const AppContextProvider = (props) => {
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
     const [currState, setCurrState] = useState('takeaway');
     const [items, setItems] = useState([]);
+    const [loader, setLoader] = useState(false);
+
 
     const [userData, setUserData] = useState(false);
 
@@ -80,6 +82,7 @@ const AppContextProvider = (props) => {
         items,
         userData, setUserData, loadUserProfileData,
         orders, getAllOrders,
+        loader, setLoader
     }
 
     return <AppContext.Provider value={value}>
