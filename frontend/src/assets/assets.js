@@ -28,6 +28,12 @@ import bag_icon from './bag_icon.png'
 import logout_icon from './logout_icon.png'
 import parcel_icon from './parcel_icon.png'
 
+import header_2 from './header_2.jpg'
+import header_3 from './header_3.jpg'
+import header_4 from './header_4.jpg'
+import header_5 from './header_5.jpg'
+import header_1 from './header_1.jpg'
+
 export const assets = {
     logo,
     basket_icon,
@@ -84,3 +90,26 @@ export const menu_list = [
         menu_image: menu_8
     }]
 
+
+export const imageGallary = [
+    {
+        id : 1,
+        image : header_1,
+    },
+    {
+        id : 1,
+        image : header_2,
+    },
+    {
+        id : 1,
+        image : header_3,
+    },
+    {
+        id : 1,
+        image : header_4,
+    },
+    {
+        id : 1,
+        image : header_5,
+    }
+]
