@@ -23,7 +23,7 @@ const Banner = () => {
     <div
       className='h-[34vw] mt-5 rounded-3xl relative transition-all duration-1000 ease-in-out'
       style={{
-        backgroundImage: `url(${currentImage})`,
+        backgroundImage: `url(${currentImage ? currentImage : imageGallary[0].image})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
