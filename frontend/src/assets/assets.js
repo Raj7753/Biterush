@@ -33,6 +33,7 @@ import header_3 from './header_3.jpg'
 import header_4 from './header_4.jpg'
 import header_5 from './header_5.jpg'
 import header_1 from './header_1.jpg'
+import header_6 from './header_6.jpg'
 
 export const assets = {
     logo,
@@ -53,7 +54,8 @@ export const assets = {
     profile_icon,
     logout_icon,
     bag_icon,
-    parcel_icon
+    parcel_icon,
+    header_6
 }
 
 export const menu_list = [

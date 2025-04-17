@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { imageGallary } from '../assets/assets'
+import { assets, imageGallary } from '../assets/assets'
 import { useNavigate } from 'react-router-dom'
 
 const Banner = () => {
@@ -23,7 +23,7 @@ const Banner = () => {
     <div
       className='h-[34vw] mt-5 rounded-3xl relative transition-all duration-1000 ease-in-out'
       style={{
-        backgroundImage: `url(${currentImage ? currentImage : imageGallary[0].image})`,
+        backgroundImage: `url(${currentImage? currentImage : assets.header_6})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
