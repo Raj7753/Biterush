@@ -34,7 +34,7 @@ const Banner = () => {
           Choose from a diverse menu featuring a delectable array of dishes crafted with the finest ingredients and culinary expertise. Our mission is to satisfy your craving and elevate your dining experience, one delicious meal at a time.
         </p>
         <button
-          className='px-4 py-1 bg-white text-black rounded-full mt-2'
+          className='px-4 py-1 bg-white text-black rounded-full mt-2 hover:bg-orange-500 transition-all duration-300'
           onClick={() => {
             navigate('/menu');
             scrollTo(0, 0);
