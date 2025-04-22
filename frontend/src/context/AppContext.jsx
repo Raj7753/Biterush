@@ -15,6 +15,8 @@ const AppContextProvider = (props) => {
     const [loader, setLoader] = useState(false);
     const [loader_2, setLoader_2] = useState(false);
 
+    const [messages, setMessages] = useState([]);
+
 
     const [userData, setUserData] = useState(false);
 
@@ -54,6 +56,21 @@ const AppContextProvider = (props) => {
         }
     }
 
+    const getAllMessages = async () => {
+        try {
+            const {data} = await axios.get(backendUrl+'/api/common/all-messages');
+            console.log(data);
+            if(data.success){
+                setMessages(data.messages);
+            } else{
+                toast.error(data.message);
+            }
+        } catch (error) {
+            console.error(error);
+            toast.error("Something went wrong! Please try again.");
+        }
+    }
+
     const getAllOrders = async () => {
         try {
             const {data} = await axios.get(backendUrl+'/api/user/get-order', {headers:{token}});
@@ -90,7 +107,8 @@ const AppContextProvider = (props) => {
         userData, setUserData, loadUserProfileData,
         orders, getAllOrders,
         loader, setLoader,
-        loader_2
+        loader_2,
+        messages, getAllMessages,
     }
 
     return <AppContext.Provider value={value}>
