@@ -16,6 +16,9 @@ const Navbar = () => {
     const navigate = useNavigate();
     const [sider, setSider] = useState(false);
 
+    const [showSearch, setShowSearch] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+
     const logout = () =>{
       setToken('');
       localStorage.removeItem('token');
@@ -35,7 +38,26 @@ const Navbar = () => {
         <Link to={'/contact'} className={`${location.pathname == '/contact'? 'border-b-[2px] border-b-[#e39830]' : ''}`}>Contact</Link>
       </ul>
       <div className='flex items-center gap-4'>
-        <img className='w-5 cursor-pointer hidden md:block' src={assets.search_icon} alt="" />
+      <div className='relative'>
+  <img 
+    className=' w-5 cursor-pointer hidden md:block' 
+    src={assets.search_icon} 
+    alt="search" 
+    onClick={() => setShowSearch(prev => !prev)} 
+  />
+  {
+    showSearch && (
+      <input 
+        type="text"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        placeholder='Search...'
+        className='absolute hidden lg:block right-10 -top-2 p-2 border outline-none rounded-md w-60 text-sm z-50'
+      />
+    )
+  }
+</div>
+
         { 
         token? 
         <>

@@ -333,3 +333,21 @@ export const sendMessage = async (req, res) => {
         }) 
     }
 }
+
+export const getAllMessages = async (req, res) => {
+    try {
+        const messages = await MessageModel.find({}).sort({createdAt:-1});
+
+        res.json({
+            success:true,
+            messages
+        })
+    } catch (error) {
+        console.log('Error in getAllMessages controller', error);
+        res.json({
+            success:false,
+            message:'Internal server error'
+        }) 
+    }
+    
+}
